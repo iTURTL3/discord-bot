@@ -27,6 +27,7 @@ module.exports = function(config) {
                   match.shift();
                   match.unshift(message);
                   self[config.commands[i].callback].apply(null, match);
+                  break;
                }
             }
          }
