@@ -7,7 +7,7 @@ module.exports = function(config) {
       message.channel.send(text);
    };
    self.avatar = function(message) {
-      console.log({"embed": {
+      message.channel.send({"embed": {
          'title': message.author.username + '\'s avatar',
          'color': 2338864,
          'image': {
