@@ -1,6 +1,6 @@
 module.exports = function() {
    var self      = this;
-   self.token    = 'discord bot token';
+   self.token    = 'discord token';
    self.commands = [
       {
          'pattern':  /^b!hello$/i,
