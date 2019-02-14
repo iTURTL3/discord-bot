@@ -5,7 +5,7 @@ module.exports = function() {
    self.commands = [
       {
          'pattern':  new RegExp('^' + self.prefix + 'hello$', 'i'),
-         'callback': 'helloWorld',
+         'callback': 'hello',
          'disabled': false
       },
       {
