@@ -16,16 +16,18 @@ module.exports = function(config) {
       }});
    };
    self.parse = function(message) {
-      for ( var i = 0, length = config.commands.length, match = false; !message.author.bot && i < length; i++ ) {
-         if ( config.commands[i].disabled ) {
-            continue;
-         }
-         else {
-            match = message.content.match(config.commands[i].pattern);
-            if ( match ) {
-               match.shift();
-               match.unshift(message);
-               self[config.commands[i].callback].apply(null, match);
+      if ( !message.author.bot ) {
+         for ( var i = 0, length = config.commands.length, match = false; i < length; i++ ) {
+            if ( config.commands[i].disabled ) {
+               continue;
+            }
+            else {
+               match = message.content.match(config.commands[i].pattern);
+               if ( match ) {
+                  match.shift();
+                  match.unshift(message);
+                  self[config.commands[i].callback].apply(null, match);
+               }
             }
          }
       }
