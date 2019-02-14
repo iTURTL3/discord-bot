@@ -1,5 +1,5 @@
 # Discord Bot
-An example discord bot with commands in NodeJS
+An example Discord bot with commands in NodeJS
 
 ## Dependencies
 ```
