@@ -13,7 +13,7 @@ module.exports = function() {
          'disabled': false
       },
       {
-         'pattern':  /^b!avatar\s*\<\@([0-9]{1,50})\>|b!avatar$/i,
+         'pattern':  /^b!avatar$/i,
          'callback': 'avatar',
          'disabled': false
       }
