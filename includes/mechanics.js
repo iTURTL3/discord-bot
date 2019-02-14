@@ -1,7 +1,7 @@
 module.exports = function(config) {
-   var self        = this
-   self.helloWorld = function(message) {
-      message.channel.send('hello world!');
+   var self  = this
+   self.ping = function(message) {
+      message.channel.send('pong!');
    };
    self.say = function(message, text) {
       message.channel.send(text);
