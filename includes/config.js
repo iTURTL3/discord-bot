@@ -4,8 +4,8 @@ module.exports = function() {
    self.prefix   = 'b!';
    self.commands = [
       {
-         'pattern':  new RegExp('^' + self.prefix + 'hello$', 'i'),
-         'callback': 'hello',
+         'pattern':  new RegExp('^' + self.prefix + 'ping', 'i'),
+         'callback': 'ping',
          'disabled': false
       },
       {
