@@ -16,7 +16,7 @@ module.exports = function(config) {
       }});
    };
    self.parse = function(message) {
-      if ( !message.author.bot && message.content.indexOf(config.prefix) > -1 ) {
+      if ( !message.author.bot && message.content.indexOf(config.prefix) === 0 ) {
          for ( var i = 0, length = config.commands.length, match = false; i < length; i++ ) {
             if ( config.commands[i].disabled ) {
                continue;
