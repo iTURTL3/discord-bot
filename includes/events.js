@@ -4,7 +4,7 @@ module.exports = function(bot, config, callbacks) {
       console.log(error);
    };
    self.message = function(message) {
-      if ( !message.author.bot && message.content.indexOf(config.prefix) === 0 ) {
+      if ( message.guild.me.permissions.has(config.permissions) && message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
          for ( var i = 0, length = config.commands.length, match = false; i < length; i++ ) {
             if ( !config.commands[i].disabled ) {
                match = message.content.match(config.commands[i].pattern);
