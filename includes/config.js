@@ -7,7 +7,13 @@ module.exports = function() {
    self.inviteUrl    = 'https://discordapp.com/oauth2/authorize?client_id=&scope=bot&permissions=';
    self.embedColor   = 0x00FF00;
    self.startTime    = Date.now();
-   self.commands     = [
+   self.permissions  = [
+      'READ_MESSAGES',
+      'SEND_MESSAGES',
+      'EMBED_LINKS',
+      'ATTACH_FILES'
+   ];
+   self.commands = [
       {
          'pattern':     new RegExp('^' + self.prefix + 'say\\s*(.+)$', 'i'),
          'description': 'make me say something',
