@@ -11,7 +11,7 @@ module.exports = function() {
       {
          'pattern':     new RegExp('^' + self.prefix + 'say\\s*(.+)$', 'i'),
          'description': 'make me say something',
-         'example':     self.prefix + 'say <message>!',
+         'example':     self.prefix + 'say <message>',
          'callback':    'say',
          'disabled':    false
       },
