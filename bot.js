@@ -1,6 +1,7 @@
-var config    = new (require('./includes/config.js'))();
-var mechanics = new (require('./includes/mechanics.js'))(config);
 var bot       = new (require('discord.js')).Client();
-bot.on('message', mechanics.parse);
-bot.on('error',   console.log);
+var config    = new (require('./includes/config.js'))();
+var callbacks = new (require('./includes/callbacks.js'))(bot, config);
+var events    = new (require('./includes/events.js'))(bot, config, callbacks);
+bot.on('error',   events.error);
+bot.on('message', events.message);
 bot.login(config.token);
