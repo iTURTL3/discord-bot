@@ -25,7 +25,7 @@ module.exports = function(bot, config) {
       var seconds      = Math.floor((milliseconds / 1000) % 60);
       message.channel.send({'embed': {
          'title':       config.name + ' - Up Time',
-         'description': 'i have been up for ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's',
+         'description': 'i have been alive for ' + days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's',
          'color':       config.embedColor
       }});
    };
