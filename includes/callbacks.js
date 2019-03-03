@@ -18,7 +18,7 @@ module.exports = function(bot, config) {
       }});
    };
    self.upTime = function(message) {
-      var milliseconds = Date.now() - config.startTime;
+      var milliseconds = bot.uptime;
       var days         = Math.floor(milliseconds  / (1000 * 60 * 60 * 24));
       var hours        = Math.floor((milliseconds / (1000 * 60 * 60)) % 24);
       var minutes      = Math.floor((milliseconds / (1000 * 60)) % 60);
@@ -29,13 +29,22 @@ module.exports = function(bot, config) {
          'color':       config.embedColor
       }});
    };
+   self.serverCount = function(message) {
+      message.channel.send({'embed': {
+         'title':       config.name + ' - Server Count',
+         'description': 'i am in ' + bot.guilds.size + ' servers!',
+         'color':       config.embedColor
+      }});
+   };
    self.commandList = function(message) {
       for ( var i = 0, commands = config.commands, length = commands.length, fields = []; i < length; i++ ) {
-         fields.push({
-            'name':   commands[i].description,
-            'value':  (commands[i].disabled ? '~~``' : '``') + commands[i].example + (commands[i].disabled ? '``~~' : '``'),
-            'inline': false
-         });
+         if ( !commands[i].disabled && !commands[i].private ) {
+            fields.push({
+               'name':   commands[i].description,
+               'value':  '``' + commands[i].example + '``',
+               'inline': false
+            });
+         }
       }
       message.channel.send({'embed': {
          'title':  config.name + ' - Help',
