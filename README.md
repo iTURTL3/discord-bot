@@ -12,5 +12,6 @@ eb!say hello world
 eb!invite
 eb!ping
 eb!uptime
+eb!servers
 eb!help
 ```
