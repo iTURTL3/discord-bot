@@ -10,6 +10,7 @@ require('./commands/ping.js')(bot, config, data, utilities, callbacks);
 require('./commands/uptime.js')(bot, config, data, utilities, callbacks);
 require('./commands/servers.js')(bot, config, data, utilities, callbacks);
 require('./commands/version.js')(bot, config, data, utilities, callbacks);
+require('./commands/help.js')(bot, config, data, utilities, callbacks);
 bot.on('error',   events.error);
 bot.on('ready',   events.ready);
 bot.on('message', events.message);
