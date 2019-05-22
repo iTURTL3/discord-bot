@@ -25,6 +25,14 @@ module.exports = function() {
       }
       return chunks;
    };
+   self.arraySelect = function(array, verification, callback) {
+      for ( var i = array.length - 1, selected = []; i >= 0; i-- ) {
+         if ( verification(array[i]) ) {
+            selected.push(callback ? callback(array[i]) : array[i]);
+         }
+      }
+      return selected.reverse();
+   };
    self.pagination = function(items, perPage, pageNumber) {
       var pages = Math.ceil(items.length / perPage);
       var page  = Math.max(1, Math.min(pages, pageNumber || 1));
