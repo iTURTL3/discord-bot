@@ -10,6 +10,7 @@ npm install discord.js
 ```
 b!avatar <mention>
 b!say <text>
+b!cage
 b!invite
 b!ping
 b!uptime
