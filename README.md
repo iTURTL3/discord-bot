@@ -8,10 +8,11 @@ npm install discord.js
 
 ## Example Commands
 ```
-eb!say hello world
-eb!invite
-eb!ping
-eb!uptime
-eb!servers
-eb!help
+b!avatar <mention>
+b!invite
+b!ping
+b!uptime
+b!servers
+b!version
+b!help
 ```
