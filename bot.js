@@ -8,6 +8,7 @@ var events    = new (require('./includes/events.js'))(bot, config, data, utiliti
 
 // register commands.
 require('./commands/avatar.js')(bot, config, data, utilities, callbacks);
+require('./commands/say.js')(bot, config, data, utilities, callbacks);
 require('./commands/invite.js')(bot, config, data, utilities, callbacks);
 require('./commands/ping.js')(bot, config, data, utilities, callbacks);
 require('./commands/uptime.js')(bot, config, data, utilities, callbacks);
