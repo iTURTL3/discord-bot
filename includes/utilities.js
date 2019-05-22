@@ -33,6 +33,18 @@ module.exports = function() {
       }
       return selected.reverse();
    };
+   self.arrayShuffle = function(array) {
+      for ( var i = array.length - 1, swap = 0, temp = false; i >= 0; i-- ) {
+         swap        = Math.floor(Math.random() * (i + 1));
+         temp        = array[swap];
+         array[swap] = array[i];
+         array[i]    = temp;
+      }
+      return array;
+   };
+   self.randomArrayValue = function(array) {
+      return self.arrayShuffle(array)['0'];
+   };
    self.pagination = function(items, perPage, pageNumber) {
       var pages = Math.ceil(items.length / perPage);
       var page  = Math.max(1, Math.min(pages, pageNumber || 1));
