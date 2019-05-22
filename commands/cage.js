@@ -18,7 +18,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'XLkZvFG'
    ];
    callbacks.nicolasCage = function(message) {
-      message.channel.send(text, {'files': [{
+      message.channel.send({'files': [{
          'name':       config.name + '.jpg',
          'attachment': 'https://i.imgur.com/' + utilities.randomArrayValue(data.nicolasCageImageIds) + '.jpg'
       }]});
