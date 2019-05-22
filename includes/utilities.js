@@ -19,4 +19,20 @@ module.exports = function() {
          }
       }, delay);
    };
+   self.arrayChunk = function(array, size) {
+      for ( var i = 0, length = array.length, chunks = []; i < length; i += size ) {
+         chunks.push(array.slice(i, i + size));
+      }
+      return chunks;
+   };
+   self.pagination = function(items, perPage, pageNumber) {
+      var pages = Math.ceil(items.length / perPage);
+      var page  = Math.max(1, Math.min(pages, pageNumber || 1));
+      var items = self.arrayChunk(items, perPage)[page - 1];
+      return {
+         'pages': pages,
+         'page':  page,
+         'items': items
+      };
+   };
 };
