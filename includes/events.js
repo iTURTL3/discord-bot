@@ -4,7 +4,6 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       console.log(error);
    };
    self.ready = function() {
-      bot.user.setStatus('dnd');
       bot.user.setActivity('You, ' + config.prefix + 'help', {type: 'WATCHING'});
    };
    self.message = function(message) {
