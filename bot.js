@@ -1,7 +1,10 @@
 var bot       = new (require('discord.js')).Client();
 var config    = new (require('./includes/config.js'))();
-var callbacks = new (require('./includes/callbacks.js'))(bot, config);
-var events    = new (require('./includes/events.js'))(bot, config, callbacks);
+var data      = new (require('./includes/data.js'))();
+var utilities = new (require('./includes/utilities.js'))();
+var callbacks = new (require('./includes/callbacks.js'))();
+var events    = new (require('./includes/events.js'))(bot, config, data, utilities, callbacks);
 bot.on('error',   events.error);
+bot.on('ready',   events.ready);
 bot.on('message', events.message);
 bot.login(config.token);
