@@ -9,7 +9,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'private':     false
    });
    callbacks.commandList = function(message, page) {
-      var commands = utilities.arraySelect(data.commands, function(command) {
+      var pagination = utilities.pagination(utilities.arraySelect(data.commands, function(command) {
          return !command.disabled && !command.private;
       }, function(command) {
          return {
@@ -17,8 +17,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
             'value':  '``' + command.example + '``',
             'inline': false
          };
-      });
-      var pagination = utilities.pagination(commands, config.pagination, page);
+      }), config.pagination, page);
       message.channel.send({'embed': {
          'color':  config.embedColor,
          'title':  config.name + ' - Bot Commands',
