@@ -8,7 +8,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
    };
    self.message = function(message) {
       if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
-         for ( var i = data.commands.length - 1, match = false; i >= 0; i-- ) {
+         for ( var i = 0, length = data.commands.length, match = false; i < length; i++ ) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
                if ( data.commands[i].disabled ) {
