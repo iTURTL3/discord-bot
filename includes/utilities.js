@@ -34,7 +34,7 @@ module.exports = function() {
       return selected.reverse();
    };
    self.arrayShuffle = function(array) {
-      for ( var i = array.length - 1, swap = 0, temp = false; i >= 0; i-- ) {
+      for ( var i = 0, length = array.length, swap = 0, temp = false; i < length; i++ ) {
          swap        = Math.floor(Math.random() * (i + 1));
          temp        = array[swap];
          array[swap] = array[i];
