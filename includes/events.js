@@ -7,7 +7,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       bot.user.setActivity('You, ' + config.prefix + 'help', {type: 'WATCHING'});
    };
    self.message = function(message) {
-      if ( !message.author.bot ) {
+      if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
          for ( var i = 0, length = data.commands.length, match = false; i < length; i++ ) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
