@@ -10,7 +10,10 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'bot/version',
       'moderation/kickuser',
       'moderation/banuser',
-      'help/help'
+      'help/help',
+      'help/bot',
+      'help/misc',
+      'help/moderation'
    ];
    for ( var i = 0, length = files.length; i < length; i++ ) {
       require('./' + files[i] + '.js')(bot, config, data, utilities, callbacks);
