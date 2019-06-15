@@ -3,15 +3,15 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'pattern':     new RegExp('^' + config.prefix + 'help\\s*([0-9]+)?$', 'i'),
       'description': 'display my command list',
       'example':     config.prefix + 'help <page number>',
-      'callback':    'commandList',
+      'callback':    'helpCommandList',
       'category':    'help',
       'cooldown':    2000,
       'disabled':    false,
       'private':     false
    });
-   callbacks.commandList = function(message, page) {
+   callbacks.helpCommandList = function(message, page) {
       var pagination = utilities.pagination(utilities.arraySelect(data.commands, function(command) {
-         return !command.disabled && !command.private;
+         return !command.disabled && !command.private && command.category === 'help';
       }, function(command) {
          return {
             'name':   command.description,
@@ -21,7 +21,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       }), config.pagination, page);
       message.channel.send({'embed': {
          'color':  config.embedColor,
-         'title':  config.name + ' - Bot Commands',
+         'title':  config.name + ' - Help Commands',
          'fields': pagination.items,
          'footer': {
             'text': 'displaying page: ' + pagination.page + ' of ' + pagination.pages
