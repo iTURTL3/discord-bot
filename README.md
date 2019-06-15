@@ -17,4 +17,7 @@ b!uptime
 b!servers
 b!version
 b!help
+b!bot
+b!misc
+b!mod
 ```
