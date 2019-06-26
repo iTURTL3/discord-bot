@@ -48,11 +48,11 @@ module.exports = function() {
    self.pagination = function(items, perPage, pageNumber) {
       var pages = Math.ceil(items.length / perPage);
       var page  = Math.max(1, Math.min(pages, pageNumber || 1));
-      var items = self.arrayChunk(items, perPage)[page - 1];
+      var chunk = self.arrayChunk(items, perPage)[page - 1];
       return {
          'pages': pages,
          'page':  page,
-         'items': items
+         'items': chunk
       };
    };
 };
