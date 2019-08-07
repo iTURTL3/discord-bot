@@ -8,6 +8,8 @@ npm install discord.js
 
 ## Example Commands
 ```
+b!banuser <mention>
+b!kickuser <mention>
 b!avatar <mention>
 b!say <text>
 b!cage
