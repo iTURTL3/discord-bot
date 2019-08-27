@@ -7,7 +7,8 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'category':    'help',
       'cooldown':    2000,
       'disabled':    false,
-      'private':     false
+      'private':     false,
+      'nsfw':        false
    });
    callbacks.moderationCommandList = function(message, page) {
       var pagination = utilities.pagination(utilities.arraySelect(data.commands, function(command) {
