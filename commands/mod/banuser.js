@@ -7,7 +7,8 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'category':    'moderation',
       'cooldown':    2000,
       'disabled':    false,
-      'private':     false
+      'private':     false,
+      'nsfw':        false
    });
    callbacks.banUser = function(message) {
       var member = message.mentions.members.first();
