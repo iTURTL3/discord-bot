@@ -14,6 +14,9 @@ module.exports = function(bot, config, data, utilities, callbacks) {
                if ( data.commands[i].disabled ) {
                   message.channel.send('this command is currently disabled!');
                }
+               else if ( data.commands[i].nsfw && !message.channel.nsfw ) {
+                  message.channel.send('you can only use this command in nsfw channels!');
+               }
                else if ( message.author.id in data.cooldowns ) {
                   message.channel.send('you can use another command in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id] - message.createdTimestamp) / 1000), 2) + '**s!');
                }
