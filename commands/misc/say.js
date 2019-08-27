@@ -7,7 +7,8 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'category':    'misc',
       'cooldown':    2000,
       'disabled':    false,
-      'private':     false
+      'private':     false,
+      'nsfw':        false
    });
    callbacks.say = function(message, text) {
       message.channel.send(text);
