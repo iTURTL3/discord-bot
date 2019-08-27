@@ -7,7 +7,8 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'category':    'bot',
       'cooldown':    2000,
       'disabled':    false,
-      'private':     false
+      'private':     false,
+      'nsfw':        false
    });
    callbacks.upTime = function(message) {
       var time = utilities.msToDuration(bot.uptime);
