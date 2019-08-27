@@ -1,5 +1,5 @@
 # Discord Bot
-An example Discord bot with modular commands in NodeJS.
+An example Discord bot with modular commands, pagination and nsfw command compatibility in NodeJS.
 
 ## Dependencies
 ```
