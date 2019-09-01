@@ -1,10 +1,10 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(config, data, utilities, callbacks) {
    var self   = this;
    self.error = function(error) {
       console.log(error);
    };
    self.ready = function() {
-      bot.user.setActivity('You, ' + config.prefix + 'help', {type: 'WATCHING'});
+      this.user.setActivity('You, ' + config.prefix + 'help', {type: 'WATCHING'});
    };
    self.message = function(message) {
       if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
