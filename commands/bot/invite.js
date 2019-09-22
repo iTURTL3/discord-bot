@@ -1,7 +1,7 @@
 module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'invite$', 'i'),
-      'example':     'invite',
+      'example':     config.prefix + 'invite',
       'name':        'invite',
       'description': 'invite me to your server',
       'callback':    'botInvite',
