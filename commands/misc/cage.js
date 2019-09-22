@@ -1,11 +1,12 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'cage$', 'i'),
-      'description': 'make me post a random nicolas cage image',
       'example':     config.prefix + 'cage',
+      'name':        'cage',
+      'description': 'make me post a random nicolas cage image',
       'callback':    'nicolasCage',
       'category':    'misc',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
@@ -19,7 +20,7 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'NsiWHlc',
       'XLkZvFG'
    ];
-   callbacks.nicolasCage = function(message) {
+   data.callbacks.nicolasCage = function(message) {
       message.channel.send({'files': [{
          'name':       config.name + '.jpg',
          'attachment': 'https://i.imgur.com/' + utilities.randomArrayValue(data.nicolasCageImageIds) + '.jpg'
