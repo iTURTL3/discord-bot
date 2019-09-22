@@ -11,7 +11,7 @@ module.exports = function(bot, config, data, utilities, dependencies) {
       'private':     false,
       'nsfw':        false
    });
-   data.callbacks.aboutMe = function(message, name) {
+   data.callbacks.aboutMe = function(message) {
       var time = utilities.msToDuration(bot.uptime);
       message.channel.send({'embed': {
          'color':  config.embedColor,
