@@ -1,16 +1,17 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'uptime$', 'i'),
-      'description': 'check how long i have been alive for',
       'example':     config.prefix + 'uptime',
-      'callback':    'upTime',
+      'name':        'uptime',
+      'description': 'check how long i have been alive for',
+      'callback':    'botUpTime',
       'category':    'bot',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.upTime = function(message) {
+   data.callbacks.botUpTime = function(message) {
       var time = utilities.msToDuration(bot.uptime);
       message.channel.send({'embed': {
          'color':       config.embedColor,
