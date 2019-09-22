@@ -1,24 +1,21 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'misc\\s*([0-9]+)?$', 'i'),
-      'description': 'display my miscellaneous command list',
       'example':     config.prefix + 'misc <page number>',
+      'name':        'misc',
+      'description': 'display my miscellaneous command list',
       'callback':    'miscCommandList',
       'category':    'help',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.miscCommandList = function(message, page) {
+   data.callbacks.miscCommandList = function(message, page) {
       var pagination = utilities.pagination(utilities.arraySelect(data.commands, function(command) {
-         return !command.disabled && !command.private && command.category === 'misc';
+         return command.category === 'misc' && !command.disabled && !command.private && (!command.nsfw || command.nsfw && message.channel.nsfw);
       }, function(command) {
-         return {
-            'name':   command.description,
-            'value':  '``' + command.example + '``',
-            'inline': false
-         };
+         return {'name': command.description, 'value': '``' + command.example + '``', 'inline': false};
       }), config.pagination, page);
       message.channel.send({'embed': {
          'color':  config.embedColor,
