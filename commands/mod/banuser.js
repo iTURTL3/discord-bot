@@ -1,16 +1,17 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'banuser\\s*(\\<\\@\\!?[0-9]+\\>)$', 'i'),
-      'description': 'ban a user from the server',
       'example':     config.prefix + 'banuser <mention>',
+      'name':        'banuser',
+      'description': 'ban a user from the server',
       'callback':    'banUser',
-      'category':    'moderation',
-      'cooldown':    2000,
+      'category':    'mod',
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.banUser = function(message) {
+   data.callbacks.banUser = function(message) {
       var member = message.mentions.members.first();
       if ( !message.member.hasPermission('BAN_MEMBERS') ) {
          message.channel.send('you do not have permission to ban users in this server!');
