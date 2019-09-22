@@ -12,19 +12,18 @@ module.exports = function(bot, config, data, utilities, dependencies) {
       'nsfw':        false
    });
    data.callbacks.aboutMe = function(message) {
-      var time = utilities.msToDuration(bot.uptime);
       message.channel.send({'embed': {
          'color':  config.embedColor,
          'title':  config.name + ' - About Me',
          'fields': [
             {
                'name':   'ping',
-               'value':  utilities.shortenFloat(bot.ping, 2) + 'ms!',
+               'value':  utilities.shortenFloat(bot.ping, 2) + 'ms',
                'inline': true
             },
             {
                'name':   'uptime',
-               'value':  time['0'] + 'd ' + time['1'] + 'h ' + time['2'] + 'm ' + time['3'] + 's!',
+               'value':  utilities.msToDurationString(bot.uptime),
                'inline': true
             },
             {
