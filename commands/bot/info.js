@@ -22,7 +22,7 @@ module.exports = function(bot, config, data, utilities, dependencies) {
          'fields':      [
             {
                'name':   'example',
-               'value':  config.prefix + command.example,
+               'value':  command.example,
                'inline': true
             },
             {
