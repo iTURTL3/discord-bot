@@ -7,4 +7,5 @@ module.exports = function() {
    self.version    = '1.0';
    self.embedColor = 0x252525;
    self.pagination = 10;
+   self.cooldown   = 2000;
 };
