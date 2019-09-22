@@ -1,16 +1,17 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'invite$', 'i'),
+      'example':     'invite',
+      'name':        'invite',
       'description': 'invite me to your server',
-      'example':     config.prefix + 'invite',
-      'callback':    'inviteLink',
+      'callback':    'botInvite',
       'category':    'bot',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.inviteLink = function(message) {
+   data.callbacks.botInvite = function(message) {
       message.channel.send({'embed': {
          'color':       config.embedColor,
          'title':       config.name + ' - Invite',
