@@ -11,16 +11,16 @@ module.exports = function(config, data, utilities) {
          for ( var i = 0, length = data.commands.length, match = false; i < length; i++ ) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
-               if ( data.commands[i].disabled ) {// disabled.
+               if ( data.commands[i].disabled ) {
                   message.channel.send('The **' + data.commands[i].name + '** command is currently disabled!');
                }
-               else if ( data.commands[i].nsfw && !message.channel.nsfw ) {// nsfw.
+               else if ( data.commands[i].nsfw && !message.channel.nsfw ) {
                   message.channel.send('You can only use the **' + data.commands[i].name + '** command in NSFW channels!');
                }
-               else if ( message.author.id in data.cooldowns ) {// default cooldown
+               else if ( message.author.id in data.cooldowns ) {
                   message.channel.send('You can use another command in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id] - message.createdTimestamp) / 1000), 2) + '**s!');
                }
-               else if ( message.author.id + data.commands[i].name in data.cooldowns ) {// command cooldown.
+               else if ( message.author.id + data.commands[i].name in data.cooldowns ) {
                   message.channel.send('You can use the **' + data.commands[i].name + '** command again in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id + data.commands[i].name] - message.createdTimestamp) / 1000), 2) + '**s!');
                }
                else {
