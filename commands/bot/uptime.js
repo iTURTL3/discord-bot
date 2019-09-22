@@ -12,7 +12,6 @@ module.exports = function(bot, config, data, utilities, dependencies) {
       'nsfw':        false
    });
    data.callbacks.botUpTime = function(message) {
-      var time = utilities.msToDuration(bot.uptime);
       message.channel.send({'embed': {
          'color':       config.embedColor,
          'title':       config.name + ' - Up Time',
