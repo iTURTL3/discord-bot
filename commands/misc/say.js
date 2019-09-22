@@ -1,16 +1,17 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
-      'pattern':     new RegExp('^' + config.prefix + 'say\\s*(.+)$', 'i'),
+      'pattern':     new RegExp('^' + config.prefix + 'say\\s+(.+)$', 'i'),
+      'example':     config.prefix + 'say <message>',
+      'name':        'say',
       'description': 'make me say something',
-      'example':     config.prefix + 'say <text>',
-      'callback':    'say',
+      'callback':    'sayMessage',
       'category':    'misc',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.say = function(message, text) {
+   data.callbacks.sayMessage = function(message, text) {
       message.channel.send(text);
    };
 };
