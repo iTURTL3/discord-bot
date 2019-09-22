@@ -5,10 +5,11 @@ var utilities    = new (require('./includes/utilities.js'))();
 var dependencies = new (require('./includes/dependencies.js'))();
 var events       = new (require('./includes/events.js'))(config, data, utilities);
 var bot          = new dependencies.discordjs.Client();
-// register commands.
-require('./commands/register.js')(bot, config, data, utilities, dependencies);
 // set events.
 bot.on('error',   events.error);
 bot.on('ready',   events.ready);
 bot.on('message', events.message);
+// register commands.
+require('./commands/register.js')(bot, config, data, utilities, dependencies);
+// login.
 bot.login(config.token);
