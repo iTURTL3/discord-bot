@@ -11,6 +11,23 @@ module.exports = function() {
          Math.floor((ms / 1000) % 60)
       ];
    };
+   self.msToDurationString = function(ms) {
+      var string   = '';
+      var duration = self.msToDuration(ms);
+      if ( duration['0'] > 0 ) {
+         string += duration['0'] + 'd';
+      }
+      if ( duration['1'] > 0 ) {
+         string += ' ' + duration['1'] + 'h';
+      }
+      if ( duration['2'] > 0 ) {
+         string += ' ' + duration['2'] + 'm';
+      }
+      if ( duration['3'] > 0 ) {
+         string += ' ' + duration['3'] + 's';
+      }
+      return string;
+   };
    self.objectSetAndDelete = function(scope, name, value, delay) {
       scope[name] = value;
       setTimeout(function() {
