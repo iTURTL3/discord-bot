@@ -1,21 +1,22 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'avatar\\s*(\\<\\@\\!?[0-9]+\\>)?$', 'i'),
-      'description': 'display somebodys avatar',
       'example':     config.prefix + 'avatar <mention>',
+      'name':        'avatar',
+      'description': 'display somebodys avatar',
       'callback':    'avatar',
       'category':    'misc',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.avatar = function(message) {
+   data.callbacks.avatar = function(message) {
       var user      = message.mentions.users.first() || message.author;
-      var extension = user.avatarURL.match(/\.(png|jpg|jpeg|gif)/)['0'];
+      var extension = user.displayAvatarURL.match(/\.(png|jpg|jpeg|gif)/)['0'];
       message.channel.send({'files': [{
          'name':       config.name + extension,
-         'attachment': 'https://cdn.discordapp.com/avatars/' + user.id + '/' + user.avatar + extension
+         'attachment': user.displayAvatarURL.replace(/(size=([0-9]+))/, '')
       }]});
    };
 };
