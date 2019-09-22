@@ -1,24 +1,21 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'mod\\s*([0-9]+)?$', 'i'),
-      'description': 'display my moderation command list',
       'example':     config.prefix + 'mod <page number>',
+      'name':        'mod',
+      'description': 'display my moderation command list',
       'callback':    'moderationCommandList',
       'category':    'help',
-      'cooldown':    2000,
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.moderationCommandList = function(message, page) {
+   data.callbacks.moderationCommandList = function(message, page) {
       var pagination = utilities.pagination(utilities.arraySelect(data.commands, function(command) {
-         return !command.disabled && !command.private && command.category === 'moderation';
+         return command.category === 'mod' && !command.disabled && !command.private && (!command.nsfw || command.nsfw && message.channel.nsfw);
       }, function(command) {
-         return {
-            'name':   command.description,
-            'value':  '``' + command.example + '``',
-            'inline': false
-         };
+         return {'name': command.description, 'value': '``' + command.example + '``', 'inline': false};
       }), config.pagination, page);
       message.channel.send({'embed': {
          'color':  config.embedColor,
