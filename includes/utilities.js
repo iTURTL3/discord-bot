@@ -42,6 +42,13 @@ module.exports = function() {
       }
       return array;
    };
+   self.arrayFind = function(array, verification) {
+      for ( var i = array.length - 1; i >= 0; i-- ) {
+         if ( verification(array[i]) ) {
+            return array[i];
+         }
+      }
+   };
    self.randomArrayValue = function(array) {
       return self.arrayShuffle(array)['0'];
    };
