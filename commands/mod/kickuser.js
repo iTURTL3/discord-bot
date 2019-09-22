@@ -1,16 +1,17 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'kickuser\\s*(\\<\\@\\!?[0-9]+\\>)$', 'i'),
-      'description': 'kick a user from the server',
       'example':     config.prefix + 'kickuser <mention>',
+      'name':        'kickuser',
+      'description': 'kick a user from the server',
       'callback':    'kickUser',
-      'category':    'moderation',
-      'cooldown':    2000,
+      'category':    'mod',
+      'cooldown':    0,
       'disabled':    false,
       'private':     false,
       'nsfw':        false
    });
-   callbacks.kickUser = function(message) {
+   data.callbacks.kickUser = function(message) {
       var member = message.mentions.members.first();
       if ( !message.member.hasPermission('KICK_MEMBERS') ) {
          message.channel.send('you do not have permission to kick users in this server!');
