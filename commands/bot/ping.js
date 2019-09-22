@@ -1,7 +1,7 @@
 module.exports = function(bot, config, data, utilities, dependencies) {
    data.commands.push({
       'pattern':     new RegExp('^' + config.prefix + 'ping$', 'i'),
-      'example':     'ping',
+      'example':     config.prefix + 'ping',
       'name':        'ping',
       'description': 'check my ping latency',
       'callback':    'botLatency',
