@@ -4,7 +4,7 @@ module.exports = function(config, data, utilities) {
       console.log(error);
    };
    self.ready = function() {
-      this.user.setActivity('You, ' + config.prefix + 'help', {'type': 'WATCHING'});
+      this.user.setActivity('you, ' + config.prefix + 'help', {'type': 'WATCHING'});
    };
    self.message = function(message) {
       if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
@@ -12,16 +12,16 @@ module.exports = function(config, data, utilities) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
                if ( data.commands[i].disabled ) {
-                  message.channel.send('The **' + data.commands[i].name + '** command is currently disabled!');
+                  message.channel.send('the **' + data.commands[i].name + '** command is currently disabled!');
                }
                else if ( data.commands[i].nsfw && !message.channel.nsfw ) {
-                  message.channel.send('You can only use the **' + data.commands[i].name + '** command in NSFW channels!');
+                  message.channel.send('you can only use the **' + data.commands[i].name + '** command in nsfw channels!');
                }
                else if ( message.author.id in data.cooldowns ) {
-                  message.channel.send('You can use another command in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id] - message.createdTimestamp) / 1000), 2) + '**s!');
+                  message.channel.send('you can use another command in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id] - message.createdTimestamp) / 1000), 2) + '**s!');
                }
                else if ( message.author.id + data.commands[i].name in data.cooldowns ) {
-                  message.channel.send('You can use the **' + data.commands[i].name + '** command again in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id + data.commands[i].name] - message.createdTimestamp) / 1000), 2) + '**s!');
+                  message.channel.send('you can use the **' + data.commands[i].name + '** command again in **' + utilities.shortenFloat(Math.max(0.01, (data.cooldowns[message.author.id + data.commands[i].name] - message.createdTimestamp) / 1000), 2) + '**s!');
                }
                else {
                   match.shift();
