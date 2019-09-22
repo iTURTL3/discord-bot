@@ -11,13 +11,13 @@ npm install discord.js
 b!banuser <mention>
 b!kickuser <mention>
 b!avatar <mention>
+b!info <command name>
 b!say <text>
 b!cage
 b!invite
 b!ping
 b!uptime
-b!servers
-b!version
+b!about
 b!help
 b!bot
 b!misc
