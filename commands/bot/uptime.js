@@ -16,7 +16,7 @@ module.exports = function(bot, config, data, utilities, dependencies) {
       message.channel.send({'embed': {
          'color':       config.embedColor,
          'title':       config.name + ' - Up Time',
-         'description': 'i have been alive for ' + time['0'] + 'd ' + time['1'] + 'h ' + time['2'] + 'm ' + time['3'] + 's!'
+         'description': 'i have been alive for ' + utilities.msToDurationString(bot.uptime) + '!'
       }});
    };
 };
