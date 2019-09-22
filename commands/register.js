@@ -1,4 +1,4 @@
-module.exports = function(bot, config, data, utilities, callbacks) {
+module.exports = function(bot, config, data, utilities, dependencies) {
    var files = [
       'misc/avatar',
       'misc/say',
@@ -16,6 +16,6 @@ module.exports = function(bot, config, data, utilities, callbacks) {
       'help/mod'
    ];
    for ( var i = 0, length = files.length; i < length; i++ ) {
-      require('./' + files[i] + '.js')(bot, config, data, utilities, callbacks);
+      require('./' + files[i] + '.js')(bot, config, data, utilities, dependencies);
    }
 };
