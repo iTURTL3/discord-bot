@@ -5,13 +5,14 @@ module.exports = function() {
    };
    self.msToDuration = function(ms) {
       return [
-         Math.floor(ms  / (1000 * 60   * 60 * 24)),
-         Math.floor((ms / (1000 * 60   * 60)) % 24),
-         Math.floor((ms / (1000 * 60)) % 60),
-         Math.floor((ms / 1000) % 60)
+         Math.floor(ms  / (1000 * 60   * 60 * 24)),// d
+         Math.floor((ms / (1000 * 60   * 60)) % 24),// h
+         Math.floor((ms / (1000 * 60)) % 60),// m
+         Math.floor((ms / 1000) % 60),// s
+         Math.floor(ms % 1000)// ms
       ];
    };
-   self.msToDurationString = function(ms) {
+   self.msToDurationString = function(ms, markdown) {
       var string   = '';
       var duration = self.msToDuration(ms);
       if ( duration['0'] > 0 ) {
@@ -26,7 +27,7 @@ module.exports = function() {
       if ( duration['3'] > 0 ) {
          string += ' ' + duration['3'] + 's';
       }
-      return string;
+      return (markdown ? string.replace(/([0-9]+)/g, markdown + '$1' + markdown) : string);
    };
    self.objectSetAndDelete = function(scope, name, value, delay) {
       scope[name] = value;
