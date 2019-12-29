@@ -7,7 +7,7 @@ module.exports = function(config, data, utilities) {
       this.user.setActivity('you, ' + config.prefix + 'help', {'type': 'WATCHING'});
    };
    self.message = function(message) {
-      if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot ) {
+      if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot && message.channel.guild ) {
          for ( var i = 0, length = data.commands.length, match = false; i < length; i++ ) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
