@@ -8,7 +8,7 @@ module.exports = function(config, data, utilities) {
    };
    self.message = function(message) {
       if ( message.content.indexOf(config.prefix) === 0 && !message.author.bot && message.channel.guild ) {
-         for ( var i = 0, length = data.commands.length, match = false; i < length; i++ ) {
+         for ( var i = data.commands.length, match = false; i--; ) {
             match = message.content.match(data.commands[i].pattern);
             if ( match ) {
                if ( data.commands[i].disabled ) {
